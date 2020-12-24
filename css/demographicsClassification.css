@@ -1,0 +1,50 @@
+#sample-images img{
+    max-width: 100px;
+    margin: 1rem;
+}
+
+/* +------------------------+ */
+/* |  Img & Video Uploader  | */
+/* +------------------------+ */
+#s-img-uploader,
+#s-video-uploader {
+	max-width: 480px;
+	border: 2px dashed #ccc;
+	border-radius: 16px;
+	background: rgba(142, 175, 4, 0);
+}
+#s-img-uploader i,
+#s-video-uploader i {
+	font-size: 100px;
+	color: #8eaf04;
+	opacity: 30%;
+}
+#s-img-uploader input,
+#s-video-uploader input {
+	display: none;
+}
+/*.highlight will be added when user drag file above uploader area*/
+#s-img-uploader.highlight,
+#s-video-uploader.highlight {
+	border-color: #8eaf04;
+	background: rgba(142, 175, 4, 0.05);
+}
+#s-img-uploader.highlight i,
+#s-video-uploader.highlight i {
+	opacity: 100%;
+}
+#s-img-preview img,
+#s-img-preview canvas,
+#s-video-preview video {
+	max-width: 800px;
+	margin: auto;
+	display: block;
+	box-sizing: border-box;
+	border: 10px white solid;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+#s-img-preview canvas {
+	max-width: 100%;
+	height: auto;
+}

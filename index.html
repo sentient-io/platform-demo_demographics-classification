@@ -13,7 +13,8 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/demoapps.css">
-    <link rel="stylesheet" tyep="text/css" href="css/s-color.css">
+    <link rel="stylesheet" type="text/css" href="css/s-color.css">
+    <link rel="stylesheet" type="text/css" href="css/demographicsClassification.css">
 
     <!-- Import Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +22,7 @@
     <!-- Import Fontawsome -->
     <link rel="stylesheet" href="fontawsome/css/all.css">
 
-    <title>Template</title>
+    <title>Demographics Classification</title>
 </head>
 
 <body>
@@ -70,12 +71,17 @@
             <div id="header-contianer" class="d-flex flex-column flex-md-row  justify-content-md-between">
                 <div id="header-container-l" class="d-flex flex-column col-md-8">
                     <div class="d-flex flex-row">
-                        <h4>Demo App</h4><span class="ml-2 p-2 badge badge-pill"
+                        <h4>Demographics Classification</h4><span class="ml-2 p-2 badge badge-pill"
                             style="background-color:#B71C1C; color:white; height: 28px;"><i>DEMO</i></span>
                     </div>
-                    <div>
+                    <div class="mt-3">
                         <p>
-                            This is a demo app template.
+                            This Computer Vision microservice detects for faces from an input image and predicts the
+                            demographics of each face (age, gender and race). The image is given as an input encoded
+                            using base64. The microservice will a face detector and subsequently models to predict age,
+                            gender and race. The results will then be returned back to the user as a JSON output
+                            together with bounding box coordinates for each face.Races include: Asian, Indian, White,
+                            Black, Middle Eastern and Latino Hispanic
                         </p>
                     </div>
                 </div>
@@ -94,37 +100,74 @@
             <!-- -END- Header Content, title and description -->
 
             <!-- Demp App Container -->
-            <div class="p-3 mt-5 d-flex flex-column flex-lg-row" style="min-height: 30vh;">
+            <div class="p-3 mt-5 d-flex flex-column" style="min-height: 30vh;">
 
                 <!-- Add class "col-lg-6" to below div for result display -->
                 <div id="functionsContianer" class="col-12">
                     <!-- +------------------------------+ -->
                     <!-- | Demo APP Functions Goes Here | -->
                     <!-- +------------------------------+ -->
+
+                    <!-- Sample images container  -->
+                    <div id="sample-images-container">
+                        <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+                            <div id="sample-images" class="d-flex justify-content-center ">
+                                <!-- Sample images will be rendered by renderSampleImages() function inside sampleImages.js -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- +----------------+ -->
+                    <!-- | Image Uploader | -->
+                    <!-- +----------------+ -->
+                    <script src="js/imageUploader.js" async></script>
+                    <script src="js/canvas.js" async></script>
+
+                    <!-- Img Preview -->
+                    <div id="s-img-preview" class="d-flex justify-content-center">
+
+                    </div>
+                    <!-- -END- Img Preview -->
+                    <!-- Uploader drag drop box -->
+                    <div class="mx-auto mt-4 p-3" id="s-img-uploader">
+                        <form class="text-center">
+                            <i class="mb-3 material-icons">cloud_upload</i>
+                            <h5>Drag and drop single image here</h5>
+                            <p>(Max file size : 5mb)</p>
+                            <p>or</p>
+                            <input type="file" accept="image/*" id="s-img-input" onchange="uploadImg(this.files)">
+                            <label class="px-3 s-btn-primary s-btn-green" for="s-img-input">Upload a
+                                Picture</label>
+                        </form>
+                    </div>
+                    <!-- -END- Image Uploader -->
+
                 </div>
 
-                <div id="resultContainer" class="col-12 col-lg-6" style="display:none">
+                <div id="resultContainer" class="col-12 col-lg-6" style="display:!none">
                     <!-- +-----------------------------+ -->
                     <!-- |  Demo APP Results Goes Here | -->
                     <!-- +-----------------------------+ -->
                 </div>
+
             </div>
             <!-- +--------------------+ -->
             <!-- |  Demo APP Controls | -->
             <!-- +--------------------+ -->
-            <div class="m-auto pt-4 d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center"
-                style="max-width: 600px;">
-                <div class="col-3 text-center">
-                    <button id="btn-cancel" class="mb-4 s-btn-cancel" style="display: none" onclick="handleCancel()">
-                        Cancel </button>
+            <div class="m-auto pt-4 d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+                <div class="col-12 col-sm-4 text-center">
+                    <label class="px-3 s-text-sentient-green s-link-text" style="display: none;"
+                        id="inline-picture-uploader" for="s-img-input">Upload another
+                        Picture</label>
                 </div>
-                <div class="col-6 text-center">
-                    <button id="mainFunction" class="mb-4 mx-auto text-center s-btn-primary s-btn-grey"
-                        style="display: none;" onclick="handleMainFunction()">Main Function</button>
+                <div class="col-12 col-sm-4 text-center">
+                    <button id="btn-main-function" class="mb-4 mx-auto text-center s-btn-primary s-btn-green"
+                        style="display: none;" onclick="analyseImage()">Analyse Image</button>
                     <button id="btn-restart" class="mb-4  mx-auto text-center s-btn-primary s-btn-green"
                         style="display: none !important;" onclick="handleRestart()"> Restart </button>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                 </div>
             </div>
             <!-- -END- Demo App Controls -->
@@ -184,6 +227,11 @@
     <!-- Stores API Key -->
     <script src="app.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="js/demographicsClassifications.js"></script>
+
+    <script src="js/sampleImages.js" defer></script>
+
 
 </body>
 
