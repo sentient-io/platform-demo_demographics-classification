@@ -45,6 +45,10 @@ analyseImage = () => {
 	demographicsClassification(base64)
 		.then((demographicsClassificationResult) => {
 			loadingEnd();
+			$(
+				'#btn-main-function, #sample-images-container, #sample-images-text, #inline-picture-uploader'
+			).hide();
+			$('#btn-restart').show();
 			demographicsClassificationResult.results.persons.forEach((e) => {
 				console.log(e);
 				let drawOnCanvas = {
@@ -58,10 +62,6 @@ analyseImage = () => {
 					race: e.race,
 				};
 				canvasDrawBox(drawOnCanvas);
-				$(
-					'#btn-main-function, #sample-images-container, #inline-picture-uploader'
-				).hide();
-				$('#btn-restart').show();
 			});
 
 			console.log(
@@ -93,6 +93,6 @@ selectImage = (e) => {
 handleRestart = () => {
 	console.log('Restart');
 	$('#s-img-preview').empty();
-	$('#sample-images-container, #s-img-uploader').show();
+	$('#sample-images-container, #sample-images-text, #s-img-uploader').show();
 	$('#btn-restart, #inline-picture-uploader').hide();
 };

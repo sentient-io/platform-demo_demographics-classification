@@ -70,6 +70,11 @@ a:hover {
 	background-color: #8eaf04;
 }
 
+.s-btn-beige {
+	border: 1px solid #bb9968;
+	background-color: #bb9968;
+}
+
 .s-btn-grey {
 	border: 1px solid #424242;
 	background-color: #424242;

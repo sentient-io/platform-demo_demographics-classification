@@ -12,12 +12,12 @@
 	max-width: 480px;
 	border: 2px dashed #ccc;
 	border-radius: 16px;
-	background: rgba(142, 175, 4, 0);
+	background: rgba(175, 135, 4, 0);
 }
 #s-img-uploader i,
 #s-video-uploader i {
 	font-size: 100px;
-	color: #8eaf04;
+	color: #bb9968;
 	opacity: 30%;
 }
 #s-img-uploader input,
@@ -27,8 +27,8 @@
 /*.highlight will be added when user drag file above uploader area*/
 #s-img-uploader.highlight,
 #s-video-uploader.highlight {
-	border-color: #8eaf04;
-	background: rgba(142, 175, 4, 0.05);
+	border-color: #bb9968;
+	background: rgba(175, 84, 4, 0.05);
 }
 #s-img-uploader.highlight i,
 #s-video-uploader.highlight i {
