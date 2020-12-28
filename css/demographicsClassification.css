@@ -37,7 +37,7 @@
 #s-img-preview img,
 #s-img-preview canvas,
 #s-video-preview video {
-	max-width: 800px;
+	/* max-width: 800px; */
 	margin: auto;
 	display: block;
 	box-sizing: border-box;
