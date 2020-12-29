@@ -64,15 +64,15 @@ canvasDrawBox = (e) => {
 
 		let canvas = document.getElementById(canvasID);
 
-		console.log('canvas height:', canvas.offsetHeight);
-		console.log('Height:', height);
+		//console.log('canvas height:', canvas.offsetHeight);
+		//console.log('Height:', height);
 		if (height >= canvas.offsetHeight - 90){
 			height = height - 90
 		}
 
-		console.log('Height:', height);
-		console.log('X:', x);
-		console.log('Y:', y);
+		//console.log('Height:', height);
+		//console.log('X:', x);
+		//console.log('Y:', y);
 
 		let ctx = canvas.getContext('2d');
 		// Draw boxes

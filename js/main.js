@@ -2,14 +2,14 @@ let state;
 
 initialize = () => {
 	state = {};
-	console.log('State initialized');
+	//console.log('State initialized');
 };
 
 initialize();
-console.log('Main JS Loaded');
+//console.log('Main JS Loaded');
 
 initialize();
-console.log('Main JS Loaded');
+//console.log('Main JS Loaded');
 
 /* +---------------------+ */
 /* | Toggle Popup Alert  | */
@@ -24,7 +24,7 @@ exampleFunction = () => {
 	examplePromise()
 		.then(() => {})
 		.catch((err) => {
-			console.log(err);
+			//console.log(err);
 			togglePopUpAlert(
 				`Error: ${err.status}`,
 				err.responseText
@@ -40,7 +40,7 @@ exampleFunction = () => {
 
 analyseImage = () => {
 	let base64 = String(state.file.base64).split('base64,')[1];
-	console.log(base64);
+	//console.log(base64);
 	loadingStart();
 	demographicsClassification(base64)
 		.then((demographicsClassificationResult) => {
@@ -50,7 +50,7 @@ analyseImage = () => {
 			).hide();
 			$('#btn-restart').show();
 			demographicsClassificationResult.results.persons.forEach((e) => {
-				console.log(e);
+				//console.log(e);
 				let drawOnCanvas = {
 					canvasID: 'uploadedImg',
 					top: e.bbox.top,
@@ -64,7 +64,7 @@ analyseImage = () => {
 				canvasDrawBox(drawOnCanvas);
 			});
 
-			console.log(
+			//console.log(
 				'Success - Demographics Classification',
 				demographicsClassificationResult
 			);
@@ -77,12 +77,12 @@ analyseImage = () => {
 				alertContent: error.message,
 			};
 			togglePopUpAlert(errorMessage);
-			console.log('Error - Demographics Classification', err);
+			//console.log('Error - Demographics Classification', err);
 		});
 };
 
 selectImage = (e) => {
-	console.log(e);
+	//console.log(e);
 	let base64 = e.src;
 	let id = e.id;
 	state.file = { base64: base64, name: id, type: 'image/jpeg' };
@@ -91,7 +91,7 @@ selectImage = (e) => {
 };
 
 handleRestart = () => {
-	console.log('Restart');
+	//console.log('Restart');
 	$('#s-img-preview').empty();
 	$('#sample-images-container, #sample-images-text, #s-img-uploader').show();
 	$('#btn-restart, #inline-picture-uploader').hide();

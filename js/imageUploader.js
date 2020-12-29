@@ -1,4 +1,4 @@
-console.log('Img Uploader Ready');
+//console.log('Img Uploader Ready');
 
 /* +----------------+ */
 /* |  Img Uploader  | */
@@ -42,7 +42,7 @@ function handleDrop(e) {
 
 // Handle picture preview
 uploadImg = (files) => {
-	console.log('Start upload image');
+	//console.log('Start upload image');
 	if (files[0].size >= fileSizeLimit) {
 		let errTitle = 'File Size Too Big';
 		let errMsg =
@@ -50,7 +50,7 @@ uploadImg = (files) => {
 		togglePopUpAlert({ alertTitle: errTitle, alertContent: errMsg });
 		// Clear record of uploaded file
 		$('#single-pic-input').val('');
-		console.log('Error, file size too large');
+		//console.log('Error, file size too large');
 	} else {
 		// Filter out un-supported image format
 		checkImgFormat({ inputFormat: files[0].type.split('/')[1] })
@@ -67,10 +67,10 @@ uploadImg = (files) => {
 					// Push original base64 string to state
 					state.file.base64 = reader.result;
 				};
-				console.log('Image uploaded');
+				//console.log('Image uploaded');
 			})
 			.catch((error) => {
-				console.log(error);
+				//console.log(error);
 			});
 	}
 };
@@ -90,7 +90,7 @@ previewImg = (src, previewPicSize = 600) => {
 			togglePopUpAlert(err);
 			// Clear record of uploaded file
 			handleRestart();
-			console.log(
+			//console.log(
 				'Low image resolution, please use image with at least 416 x 416px'
 			);
 			return;
@@ -106,7 +106,7 @@ previewImg = (src, previewPicSize = 600) => {
 			}
 			state.file.resizeRatio = previewPicSize / image.height;
 		}
-		//console.log(canvasResizeRatio)
+		////console.log(canvasResizeRatio)
 
 		$('#s-img-uploader').hide();
 		// Remove existing preview canvas
