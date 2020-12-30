@@ -91,8 +91,8 @@ previewImg = (src, previewPicSize = 600) => {
 			// Clear record of uploaded file
 			handleRestart();
 			//console.log(
-				'Low image resolution, please use image with at least 416 x 416px'
-			);
+			// 	'Low image resolution, please use image with at least 416 x 416px'
+			// );
 			return;
 		} else if (image.width >= image.height) {
 			// Prevent upscaling small images
