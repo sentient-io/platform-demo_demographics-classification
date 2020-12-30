@@ -65,9 +65,9 @@ analyseImage = () => {
 			});
 
 			//console.log(
-				'Success - Demographics Classification',
-				demographicsClassificationResult
-			);
+			// 	'Success - Demographics Classification',
+			// 	demographicsClassificationResult
+			// );
 		})
 		.catch((err) => {
 			loadingEnd();
